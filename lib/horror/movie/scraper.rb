@@ -14,27 +14,19 @@ module Horror
 			end
 
 			def scrape_horror_movies
-				@doc.css("table.table tr").each do |row| 
-					movie_rank = row.css(".bold").text
-					movie_rating = row.css(".tMeterScore").text
-					movie_rating.delete! " " #not a blank space, actually a special tomatometer character.
-					movie_title = row.css(".unstyled.articleLink").text.strip
-					movie_url = row.css(".unstyled.articleLink").attribute("href").value
-					number_of_reviews = row.css(".right.hidden-xs").text
-					#to do create new instance of a movie
-
+				rows = @doc.css("table.table tr")
+				rows.shift
+				rows[0 .. 24].each do |row| 
+					listing = Horror::Movie::Listing.new(row)
 				end
 			end
 
-
+      def movie_synopsis(movie)
+      	@doc = Nokogiri::HTML(open(movie.movie_url))
+      	@doc.css("#movieSynopsis").text.strip
+      end
 
 		end
 	end
 end
 
-  #puts doc
-
- #things = doc.css("table.table tr")
- #things.shift
-
- #puts things.count

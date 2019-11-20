@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "horror/movie/cli/version"
+require "horror/movie/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "horror-movie-cli"
-  spec.version       = Horror::Movie::Cli::VERSION
+  spec.version       = Horror::Movie::VERSION
   spec.authors       = ["'Jazmin M'"]
   spec.email         = ["'jazminmerckel@gmail.com'"]
 

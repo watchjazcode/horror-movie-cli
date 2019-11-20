@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/horror/movie/cli'
+
+Horror::Movie::Cli.new.welcome
