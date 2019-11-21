@@ -29,16 +29,20 @@ module Horror
 		    print_movie(movie)
 
 		    puts ""
-		    puts "Would you like to see the movie summary? Yes or No?"
+		    puts "Would you like to see the movie summary and a random review?"
+		    puts ""
+		    puts "Please enter yes or no."
 		    puts ""
 
 		    input = gets.strip.downcase
 		    if input == "yes"
-		      print_movie_synopsis(movie)
+		      print_movie_info(movie)
 		    end
 
 		    puts ""
-		    puts "Would you like to see information on another movie? Enter Yes or No?"
+		    puts "Would you like to see information on another movie?"
+		    puts ""
+		    puts "Please enter yes or no."
 		    puts ""
 
 		    input = gets.strip.downcase
@@ -71,11 +75,19 @@ module Horror
 		    puts ""
       end
 
-      def print_movie_synopsis(movie)
+      def print_movie_info(movie)
+      	movie_info = movie.movie_info
 		    puts ""                     
       	puts "---------------Movie Synopsis--------------"
 		    puts ""
-		    puts "#{movie.movie_info.movie_synopsis}"
+		    puts "#{movie_info.movie_synopsis}"
+		    puts ""
+		    puts ""
+		    puts "---------------Random Review---------------"
+		    puts ""
+		    puts "#{movie_info.movie_review}"
+		    puts ""
+		    puts "-------------------------------------------"
 		    puts ""
       end
 
