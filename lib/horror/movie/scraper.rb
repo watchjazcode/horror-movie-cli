@@ -21,9 +21,8 @@ module Horror
 				end
 			end
 
-      def movie_synopsis(movie)
-      	@doc = Nokogiri::HTML(open(movie.movie_url))
-      	@doc.css("#movieSynopsis").text.strip
+      def movie_info(movie)
+      	Nokogiri::HTML(open(movie.movie_url))
       end
 
 		end

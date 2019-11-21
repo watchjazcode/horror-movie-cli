@@ -31,8 +31,9 @@ module Horror
 				@number_of_reviews = @row.css(".right.hidden-xs").text
 			end
 
-			def movie_synopsis
-				Horror::Movie::Scraper.new.movie_synopsis(self)
+			def movie_info
+				doc = Horror::Movie::Scraper.new.movie_info(self)
+				Horror::Movie::Info.new(doc)
 			end
 
 			def self.all

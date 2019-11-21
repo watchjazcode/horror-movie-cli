@@ -1,6 +1,7 @@
 #require "horror/movie/version"
 require_relative "../movie/scraper.rb"
 require_relative "../movie/listing.rb"
+require_relative "../movie/info.rb"
 
 module Horror
   module Movie
@@ -74,7 +75,7 @@ module Horror
 		    puts ""                     
       	puts "---------------Movie Synopsis--------------"
 		    puts ""
-		    puts "#{movie.movie_synopsis}"
+		    puts "#{movie.movie_info.movie_synopsis}"
 		    puts ""
       end
 
