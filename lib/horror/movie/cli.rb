@@ -8,7 +8,9 @@ module Horror
     class Cli
       def welcome
       	Horror::Movie::Scraper.new.scrape_horror_movies
-      	puts "Hello! Welcome to the Rotten Tomatoes: Top 25 Horror Movies List."
+      	puts File.read("lib/horror/movie/intro.txt").colorize :green
+      	puts ""
+      	puts " Hello! Welcome to the Rotten Tomatoes: Top 25 Horror Movies List."
       	puts ""
       	main_program
       end
@@ -18,11 +20,16 @@ module Horror
       	print_movies
 
         puts ""
-		    puts "Which movie would you like further information on?"
+		    puts "Would you like further information on a movie?"
 		    puts ""
-		    puts "Please enter a number."
+		    puts "If yes, please enter a number."
+		    puts "If not, please enter no."
 		    puts ""
 		    input = gets.strip
+		    if input.downcase == "no"
+		    	goodbye
+		    end
+
 
 		    movie = Horror::Movie::Listing.find(input.to_i)
 
@@ -49,14 +56,7 @@ module Horror
 		    if input == "yes"
 		      main_program
 		    elsif input == "no"
-		      puts ""
-		      puts "Thank you for your interest. Have a spooky day!"
-		      puts ""
-		      puts ""
-        	puts File.read "lib/horror/movie/skull.txt"
-        	puts ""
-        	puts ""
-		      exit
+		    	goodbye
 		    else
 		      puts ""
 		      puts "I don't understand that answer."
@@ -98,6 +98,17 @@ module Horror
 		    Horror::Movie::Listing.all.each.with_index do |movie, index|
 	        puts "#{index + 1}. #{movie.movie_title}"
 	      end
+      end
+
+      def goodbye
+	      puts ""
+	      puts "Thank you for your interest. Have a spooky day!".colorize :green
+	      puts ""
+	      puts ""
+	    	puts File.read("lib/horror/movie/skull.txt").colorize :green
+	    	puts ""
+	    	puts ""
+	      exit
       end
     end
   end

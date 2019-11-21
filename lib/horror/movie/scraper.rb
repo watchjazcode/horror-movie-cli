@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'colorize'
 
 #distinct from other parts of the program, i.e. module Horror: everything is related to horror.
 #class Scraper = object that does all of the scraping for us.
