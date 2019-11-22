@@ -49,7 +49,7 @@ module Horror
 
 		  def correct_number?
 		  	input = gets.strip
-		  	until input.downcase == "no" || (1..25).include?(input.to_i)
+		  	until input.downcase == "no" || (1..25).include?(input.to_i) || input.downcase == "exit"
 		  		puts ""
 		  	  puts "------------------------------------------------"
 		  	  puts "Invalid answer."
@@ -60,7 +60,7 @@ module Horror
 		  		movie = Horror::Movie::Listing.find(input.to_i)
 					print_movie(movie)
 					return movie
-				elsif input.downcase == "no"
+				elsif input.downcase == "no" || input.downcase == "exit"
 					goodbye
 				end
 			end
@@ -68,7 +68,7 @@ module Horror
 
 		  def summary_and_review?(movie)
 		  	input = gets.strip.downcase
-		  	until input == "yes" || input == "no"
+		  	until input == "yes" || input == "no" || input == "exit"
 		  	  puts ""
 		  	  puts "------------------------------------------------"
 		  	  puts "Invalid answer."
@@ -77,12 +77,15 @@ module Horror
 		  	end
 		    if input == "yes"
 		      print_movie_info(movie)
+		    elsif input == "no"
+		    elsif input == "exit"
+		    	goodbye
 		    end
 		  end
 
 		  def another_movie?
 		    input = gets.strip.downcase
-		  	until input == "yes" || input == "no"
+		  	until input == "yes" || input == "no" || input == "exit"
 		  	  puts ""
 		  	  puts "------------------------------------------------"
 		  	  puts "Invalid answer."
@@ -91,7 +94,7 @@ module Horror
 		  	end
 		    if input == "yes"
 		      main_program
-		    elsif input == "no"
+		    elsif input == "no" || input == "exit"
 		    	goodbye
 		    end
 		  end
