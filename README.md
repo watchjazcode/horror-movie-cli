@@ -4,7 +4,9 @@ Welcome! This Ruby CLI Gem provides a listing of the Top 25 Horror Movies from t
 
 ## Demo Video
 
-To be updated.
+Link to demo: 
+
+https://youtu.be/82l2RuPqzJQ
 
 ## Installing the Horror-Movie-CLI-Gem
 
