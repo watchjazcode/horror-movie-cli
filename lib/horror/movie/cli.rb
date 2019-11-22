@@ -27,15 +27,8 @@ module Horror
 		    puts "If yes, please enter a number 1-25."
 		    puts "If not, please enter no."
 		    puts ""
-		    input = gets.strip
-		    if input.downcase == "no"
-		    	goodbye
-		    end
 
-
-		    movie = Horror::Movie::Listing.find(input.to_i)
-
-		    print_movie(movie)
+		    movie = correct_number?
 
 		    puts "------------------------------------------------"
 		    puts "Would you like to see the movie's summary and a random review?"
@@ -50,8 +43,28 @@ module Horror
 		    puts ""
 		    puts "Please enter yes or no."
 		    puts ""
+
 		    another_movie?
 		  end
+
+		  def correct_number?
+		  	input = gets.strip
+		  	until input.downcase == "no" || (1..25).include?(input.to_i)
+		  		puts ""
+		  	  puts "------------------------------------------------"
+		  	  puts "Invalid answer."
+		  	  puts ""
+		  	 	input = gets.strip
+		  	end
+		  	if (1..25).include? input.to_i
+		  		movie = Horror::Movie::Listing.find(input.to_i)
+					print_movie(movie)
+					return movie
+				elsif input.downcase == "no"
+					goodbye
+				end
+			end
+
 
 		  def summary_and_review?(movie)
 		  	input = gets.strip.downcase
