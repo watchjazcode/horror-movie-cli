@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["'jazminmerckel@gmail.com'"]
 
   spec.summary       = %q{Horror movie CLI}
-  spec.description   = %q{Horror movie CLI}
+  spec.description   = %q{This Ruby CLI Gem provides a listing of the Top 25 Horror Movies from the Rotten Tomatoes website.}
   spec.homepage      = "https://github.com/watchjazcode/horror-movie-cli"
   spec.license       = "MIT"
 

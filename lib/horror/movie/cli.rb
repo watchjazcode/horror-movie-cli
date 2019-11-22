@@ -1,4 +1,3 @@
-#require "horror/movie/version"
 require_relative "../movie/scraper.rb"
 require_relative "../movie/listing.rb"
 require_relative "../movie/info.rb"
@@ -8,9 +7,9 @@ module Horror
     class Cli
       def welcome
       	Horror::Movie::Scraper.new.scrape_horror_movies
-      	puts File.read("lib/horror/movie/intro.txt").colorize :green
+      	puts File.read("lib/horror/movie/intro.txt").colorize :red
       	puts ""
-      	puts "Hello! Welcome to the Rotten Tomatoes: Top 25 Horror Movies List."
+      	puts "Hello! Welcome to the Rotten Tomatoes: Top 25 Horror Movies List.".colorize :red
       	puts ""
       	main_program
       end
@@ -19,29 +18,29 @@ module Horror
 
       	print_movies
 
-        puts "------------------------------------------------"
+        puts "------------------------------------------------".colorize :red
         puts ""
-		    puts "Would you like further information on a movie?"
+		    puts "Would you like further information on a movie?".colorize :red
       	puts ""
-      	puts "------------------------------------------------"
-		    puts "If yes, please enter a number 1-25."
-		    puts "If not, please enter no."
+      	puts "------------------------------------------------".colorize :red
+		    puts "If yes, please enter a number 1-25.".colorize :red
+		    puts "If not, please enter no.".colorize :red
 		    puts ""
 
 		    movie = correct_number?
 
-		    puts "------------------------------------------------"
-		    puts "Would you like to see the movie's summary and a random review?"
+		    puts "------------------------------------------------".colorize :red
+		    puts "Would you like to see the movie's summary and a random review?".colorize :red
 		    puts ""
-		    puts "Please enter yes or no."
+		    puts "Please enter yes or no.".colorize :red
 		    puts ""
 
 		    summary_and_review?(movie)
 
 		    puts ""
-		    puts "Would you like to see information on another movie?"
+		    puts "Would you like to see information on another movie?".colorize :red
 		    puts ""
-		    puts "Please enter yes or no."
+		    puts "Please enter yes or no.".colorize :red
 		    puts ""
 
 		    another_movie?
@@ -51,8 +50,8 @@ module Horror
 		  	input = gets.strip
 		  	until input.downcase == "no" || (1..25).include?(input.to_i) || input.downcase == "exit"
 		  		puts ""
-		  	  puts "------------------------------------------------"
-		  	  puts "Invalid answer."
+		  	  puts "------------------------------------------------".colorize :red
+		  	  puts "Invalid answer.".colorize :red
 		  	  puts ""
 		  	 	input = gets.strip
 		  	end
@@ -70,8 +69,8 @@ module Horror
 		  	input = gets.strip.downcase
 		  	until input == "yes" || input == "no" || input == "exit"
 		  	  puts ""
-		  	  puts "------------------------------------------------"
-		  	  puts "Invalid answer."
+		  	  puts "------------------------------------------------".colorize :red
+		  	  puts "Invalid answer.".colorize :red
 		  	  puts ""
 		  	 	input = gets.strip.downcase
 		  	end
@@ -87,8 +86,8 @@ module Horror
 		    input = gets.strip.downcase
 		  	until input == "yes" || input == "no" || input == "exit"
 		  	  puts ""
-		  	  puts "------------------------------------------------"
-		  	  puts "Invalid answer."
+		  	  puts "------------------------------------------------".colorize :red
+		  	  puts "Invalid answer.".colorize :red
 		  	  puts ""
 		  	 	input = gets.strip.downcase
 		  	end
@@ -101,7 +100,7 @@ module Horror
 
       def print_movie(movie)
       	puts ""
-		    puts "---------------- Movie Stats ---------------"
+		    puts "---------------- Movie Stats ---------------".colorize :red
 		    puts ""
 		    puts "Rank:                    #{movie.rank}"
 		    puts "Rating:                  #{movie.rating}"
@@ -114,20 +113,20 @@ module Horror
       def print_movie_info(movie)
       	movie_info = movie.movie_info
 		    puts ""                     
-      	puts "---------------- Movie Synopsis ---------------"
+      	puts "---------------- Movie Synopsis ---------------".colorize :red
 		    puts ""
 		    puts "#{movie_info.movie_synopsis}"
 		    puts ""
-		    puts "---------------- Random Review ----------------"
+		    puts "---------------- Random Review ----------------".colorize :red
 		    puts ""
 		    puts "#{movie_info.movie_review}"
 		    puts ""
-		    puts "------------------------------------------------"
+		    puts "------------------------------------------------".colorize :red
       end
 
       def print_movies
 		    puts ""
-		    puts "---------- Rotten Tomatoes: Top 25 Horror Movies ----------"
+		    puts "---------- Rotten Tomatoes: Top 25 Horror Movies ----------".colorize :red
 		    puts ""
 		    Horror::Movie::Listing.all.each.with_index do |movie, index|
 	        puts "#{index + 1}. #{movie.movie_title}"
@@ -136,13 +135,13 @@ module Horror
 
       def goodbye
 	      puts ""
-	      puts "------------------------------------------------".colorize :green
-	      puts "Thank you for your interest. Have a spooky day!".colorize :green
+	      puts "------------------------------------------------".colorize :red
+	      puts "Thank you for your interest. Have a spooky day!".colorize :red
 	      puts ""
 	      puts ""
-	    	puts File.read("lib/horror/movie/skull.txt").colorize :green
+	    	puts File.read("lib/horror/movie/skull.txt").colorize :red
 	    	puts ""
-	    	puts "------------------------------------------------".colorize :green
+	    	puts "------------------------------------------------".colorize :red
 	      exit
       end
     end
