@@ -43,20 +43,31 @@ module Horror
 		    puts "Please enter yes or no."
 		    puts ""
 
-		    input = gets.strip.downcase
-		    if input == "yes"
-		      print_movie_info(movie)
-		    end
+		    summary_and_review?(movie)
 
 		    puts ""
 		    puts "Would you like to see information on another movie?"
 		    puts ""
 		    puts "Please enter yes or no."
 		    puts ""
-		    valid_input?
+		    another_movie?
 		  end
 
-		  def valid_input?
+		  def summary_and_review?(movie)
+		  	input = gets.strip.downcase
+		  	until input == "yes" || input == "no"
+		  	  puts ""
+		  	  puts "------------------------------------------------"
+		  	  puts "Invalid answer."
+		  	  puts ""
+		  	 	input = gets.strip.downcase
+		  	end
+		    if input == "yes"
+		      print_movie_info(movie)
+		    end
+		  end
+
+		  def another_movie?
 		    input = gets.strip.downcase
 		  	until input == "yes" || input == "no"
 		  	  puts ""
